@@ -1,97 +1,16 @@
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="100dp"
+    android:background="#7db"
     tools:context="com.arora.purusharth.fragments.fragment2">
 
-    <TableLayout
-        android:layout_width="358dp"
-        android:layout_height="329dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+    <TextView
+        android:id="@+id/hello"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        />
 
-        <TableRow>
 
-            <EditText
-                android:id="@+id/t1"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Number 1"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="16dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <EditText
-                android:id="@+id/t2"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:ems="10"
-                android:hint="Number 2"
-                android:inputType="number"
-                tools:layout_editor_absoluteX="5dp"
-                tools:layout_editor_absoluteY="82dp" />
-        </TableRow>
-
-        <TableRow></TableRow>
-
-        <TableRow>
-
-            <Button
-                android:id="@+id/b1"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:text="-"
-                tools:layout_editor_absoluteX="15dp"
-                tools:layout_editor_absoluteY="175dp" />
-
-            <Button
-                android:id="@+id/b2"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:text="-"
-                tools:layout_editor_absoluteX="61dp"
-                tools:layout_editor_absoluteY="175dp" />
-
-            <Button
-                android:id="@+id/b3"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:text="*"
-                tools:layout_editor_absoluteX="163dp"
-                tools:layout_editor_absoluteY="175dp" />
-
-            <Button
-                android:id="@+id/b4"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:text="/"
-                tools:layout_editor_absoluteX="234dp"
-                tools:layout_editor_absoluteY="175dp" />
-
-            <Button
-                android:id="@+id/b5"
-                android:layout_width="54dp"
-                android:layout_height="46dp"
-                android:text="%"
-                tools:layout_editor_absoluteX="291dp"
-                tools:layout_editor_absoluteY="175dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <Button
-                android:id="@+id/bc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clear"
-                tools:layout_editor_absoluteX="102dp"
-                tools:layout_editor_absoluteY="260dp" />
-        </TableRow>
-    </TableLayout>
-
-</TableLayout>
+</LinearLayout>

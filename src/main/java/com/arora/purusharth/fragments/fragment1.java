@@ -17,92 +17,84 @@ import android.view.ViewGroup;
  * Use the {@link fragment1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment1 extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class fragment1 extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
+    EditText t1=null;
+    EditText t2=null;
 
     public fragment1() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment1.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment1 newInstance(String param1, String param2) {
-        fragment1 fragment = new fragment1();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment1, container, false);
+        View v=inflater.inflate(R.layout.fragment_fragment1, container, false);
+        t1=(EditText)v.findViewById(R.id.t1);
+        t2=(EditText)v.findViewById(R.id.t2);
+        Button b1=(Button)v.findViewById(R.id.b1);
+        Button b2=(Button)v.findViewById(R.id.b2);
+        Button b3=(Button)v.findViewById(R.id.b3);
+        Button b4=(Button)v.findViewById(R.id.b4);
+        Button b5=(Button)v.findViewById(R.id.b5);
+        Button bc=(Button)v.findViewById(R.id.bc);
+        b1.setOnClickListener(this);
+        b2.setOnClickListener(this);
+        b3.setOnClickListener(this);
+        b4.setOnClickListener(this);
+        b5.setOnClickListener(this);
+        bc.setOnClickListener(this);
+        return v;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+    public void onClick(View v) {
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        int x=Integer.parseInt(t1.getText().toString());
+        int y=Integer.parseInt(t2.getText().toString());
+        int z=0;
+        String s="";
+        switch(v.getId()) {
+            case R.id.b1:
+                z=x+y;s="Sum : " + z;
+                break;
+            case R.id.b2:
+                z=x-y;s="Difference : " + z;
+                break;
+            case R.id.b3:
+                z=x*y;s="Product : " + z;
+                break;
+            case R.id.b4:
+                z=x/y;s="Quotient : " + z;
+                break;
+            case R.id.b5:
+                z=x%y; s="Remainder : " + z;
+                break;
+            case R.id.bc: t1.setText("");
+                t2.setText("");
+                s="Cleared";
+                break;
+
+        }
+        //Toast.makeText(getApplicationContext(), s , Toast.LENGTH_LONG).show();
+        FragmentManager fm=getActivity().getSupportFragmentManager();
+        FragmentTransaction ft=fm.beginTransaction();
+
+        fragment2 blankF2=new fragment2();
+
+        Bundle b=new Bundle();
+        b.putString("data",s);
+        blankF2.setArguments(b);
+
+        ft.replace(R.id.top,blankF2);
+        ft.commit();
+
     }
 }
